@@ -1,41 +1,236 @@
-# Compiled Lua sources
-luac.out
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+loadstring(game:HttpGet("https://raw.githubusercontent.com/1201for/V.G_Hub_Extras/main/Universal_Client_Bypass"))()
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+  print("person detected: " .. game.Players.LocalPlayer.Name.."/ "..game.Players.LocalPlayer.DisplayName)
+   print("This Script is on Developing its not that good!")
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
+local Players = game:GetService("Players")
+local rs = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local HumanoidRootPart = character.HumanoidRootPart
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+function speed()
+ if hum.Walkspeed == 16 then
+  hum.WalkSpeed = 40  
+    else
+    hum.WalkSpeed = 16
+ end
+end
 
+print("person detected: " .. game.Players.LocalPlayer.Name.."/ "..game.Players.LocalPlayer.DisplayName)
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+    Title = "Loding....";
+    Text = "";
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150";
+    Duration = 4;
+})
+
+wait(2)
+
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+    Title = "Loaded!";
+    Text = "";
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150";
+    Duration = 2;
+})
+  
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Turtle Hub - Build a boat for a treasure ⛵", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+  local Section = Tab:AddSection({
+	Name = "Gold Grind"
+})
+
+Tab:AddToggle({
+    Name = "Afk Farm",
+    Default = false,
+    Callback = function(v)
+        getgenv().Autofarm = v
+        if getgenv().Autofarm == false then return end
+        workspace["New YellerZone"].VoteLaunchRE:FireServer()
+        workspace["Really redZone"].VoteLaunchRE:FireServer()
+        workspace["Really blueZone"].VoteLaunchRE:FireServer()
+        workspace["WhiteZone"].VoteLaunchRE:FireServer()
+        workspace["BlackZone"].VoteLaunchRE:FireServer()
+        workspace["MagentaZone"].VoteLaunchRE:FireServer()
+        workspace["CamoZone"].VoteLaunchRE:FireServer()
+
+        local StartingPosition = CFrame.new(-49, -9, -199, -0, -1, -0, -1, 1, -4, 0, -4, -0)
+        local FinalPosition = CFrame.new(-55, -361, 9491, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+
+        repeat
+
+            HumanoidRootPart.CFrame = CFrame.new(StartingPosition.X, 65, StartingPosition.Z)
+
+            local TweenService = game:GetService("TweenService")
+
+            coroutine.wrap(function()
+                repeat
+                    HumanoidRootPart.Anchored = true
+                    task.wait(0.15)
+
+                    HumanoidRootPart.Anchored = false
+                    task.wait(0.35)
+                until false
+            end)()
+
+            local Tween = TweenService:Create(HumanoidRootPart, TweenInfo.new(15, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {CFrame = CFrame.new(FinalPosition.X, 55, FinalPosition.Z)})
+            Tween:Play()
+
+            task.wait(35)
+        until false
+  end
+})
+
+local Section = Tab:AddSection({
+	Name = "Block Grind"
+})
+Tab:AddButton({
+	Name = "Tp to Chest",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Shop",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+ local Section = Tab:AddSection({
+	Name = "Chests"
+})
+Tab:AddButton({
+	Name = "Common",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Uncommon",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Rare",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Epic",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Legendary",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Random Box",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "Tools"
+})
+Tab:AddButton({
+	Name = "Measurement Tool",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "Blocks"
+})
+Tab:AddButton({
+	Name = "stone",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+ local Section = Tab:AddSection({
+	Name = "Game"
+})
+
+Tab:AddButton({
+    Name = "Delete Water",
+    Default = false,
+    Callback = function(state)
+        game.workspace.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage1.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage2.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage3.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage4.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage5.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage6.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage7.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage8.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.CaveStage9.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.ForestStage.Water:Destroy()
+        game.workspace.BoatStages.NormalStages.TheEnd.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.CircusStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.CrystalCaveStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.EnchantedForestStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.FlowerStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.LightHouseStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.SciFiCityStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.ShipWreckedStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.TrenchStage.Water:Destroy()
+        game.workspace.BoatStages.OtherStages.VaporwaveStage.Water:Destroy()
+      print("TURTLEEE")
+    end
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Settings",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+ local Section = Tab:AddSection({
+	Name = "Ui Settings"
+})
+Tab:AddBind({
+	Name = "Keybind(idk will it work)",
+	Default = Enum.KeyCode.E,
+	Hold = false,
+	Callback = function()
+		print("press")
+	end    
+})
+
+ local Section = Tab:AddSection({
+	Name = "Severs"
+})
+Tab:AddButton({
+	Name = "Sever Hop",
+	Callback = function()
+      		game:GetService("TeleportService"):Teleport(gameid, game:GetService("Players").LocalPlayer)
+  	end    
+})
+
+OrionLib:Init()
